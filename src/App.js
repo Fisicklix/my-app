@@ -4,6 +4,8 @@ import './App.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {transformHoursToMinutes} from './utils.js';
+
 
 class App extends React.Component {
 
@@ -49,7 +51,7 @@ class App extends React.Component {
       alert("Ese no es un numero!")
       return;
     }
-    var minutes= String(60*Number(this.state.text))+" Minutos"
+    const minutes = transformHoursToMinutes(this.state.text)
     const newItem = {
       text: minutes,
       id: Date.now()
@@ -74,3 +76,4 @@ class TodoList extends React.Component {
 }
 
 export default App;
+
