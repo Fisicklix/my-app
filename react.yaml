@@ -1,0 +1,35 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: mingeso
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mingeso
+  template:
+    metadata:
+      labels:
+        app: mingeso
+    spec:
+      containers:
+        - name: mingeso
+          image: fisicklix/my-app-mingeso
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-react-app
+spec:
+  type: NodePort
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+      nodePort: 31000
+  selector:
+    app: mingeso
