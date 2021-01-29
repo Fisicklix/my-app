@@ -17,11 +17,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h3>Tareas pendientes</h3>
+        <h1>Convertidor de horas a minutos</h1>
         <TodoList items={this.state.items} />
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="new-todo">
-            ¿Qué se necesita hacer?
+            <h4>Ingrese la cantidad de Horas que desea convertir</h4>
           </label>
           <input
             id="new-todo"
@@ -45,8 +45,13 @@ class App extends React.Component {
     if (this.state.text.length === 0) {
       return;
     }
+    if(isNaN(this.state.text)){
+      alert("Ese no es un numero!")
+      return;
+    }
+    var minutes= String(60*Number(this.state.text))+" Minutos"
     const newItem = {
-      text: this.state.text,
+      text: minutes,
       id: Date.now()
     };
     this.setState(state => ({
