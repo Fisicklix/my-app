@@ -45,7 +45,7 @@ class App extends React.Component {
           <List items={this.state.items} />
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="new-todo">
-              <h4>Ingrese la cantidad de Horas que desea convertir</h4>
+              <h4>Ingrese la cantidad de Horas que desea convertir </h4>
             </label>
             <input
                 id="new-todo"
