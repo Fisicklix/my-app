@@ -1,10 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 
-
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {transformHoursToMinutes} from './utils.js';
+import List from "./Components/List";
+import { transformHoursToMinutes } from './utils.js';
 
 
 class App extends React.Component {
@@ -14,28 +12,6 @@ class App extends React.Component {
     this.state = { items: [], text: '' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Convertidor de horas a minutos</h1>
-        <TodoList items={this.state.items} />
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="new-todo">
-            <h4>Ingrese la cantidad de Horas que desea convertir</h4>
-          </label>
-          <input
-            id="new-todo"
-            onChange={this.handleChange}
-            value={this.state.text}
-          />
-          <button>
-            Añadir #{this.state.items.length + 1}
-          </button>
-        </form>
-      </div>
-    );
   }
 
   handleChange(e) {
@@ -61,16 +37,26 @@ class App extends React.Component {
       text: ''
     }));
   }
-}
 
-class TodoList extends React.Component {
   render() {
     return (
-      <ul>
-        {this.props.items.map(item => (
-          <li key={item.id}>{item.text}</li>
-        ))}
-      </ul>
+        <div>
+          <h1>Convertidor de horas a minutos</h1>
+          <List items={this.state.items} />
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="new-todo">
+              <h4>Ingrese la cantidad de Horas que desea convertir</h4>
+            </label>
+            <input
+                id="new-todo"
+                onChange={this.handleChange}
+                value={this.state.text}
+            />
+            <button>
+              Añadir #{this.state.items.length + 1}
+            </button>
+          </form>
+        </div>
     );
   }
 }
